@@ -1,0 +1,38 @@
+﻿@model List<Course>
+@{
+    ViewData["Title"] = "Show";
+}
+
+<table class="table table-hover table-bordered ">
+    <div id="alertMessage" data-message="@ViewBag.AlertMessage" style="display:none;"></div>
+    <a  class="btn btn-success" asp-Controller="Course" asp-action="Add">Add Course</a>
+    <tr>
+        <td>Course Name</td>
+        <td>MaxDgree</td>
+        <td>MinDgree</td>
+        <td>Hours</td>
+        <td>DepartmentName</td>
+        <td></td>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.MaxDgree</td>
+            <td>@item.MinDgree</td>
+            <td>@item.Hours</td>
+            <td>@item.Department.Name</td>
+            <form  method="post"  asp-action="Delete" asp-controller="Course" asp-route-Id="@item.Id">
+            <td><button onclick="return confirmDeletespecialcase()" class="btn-danger btn btn-success" type="submit">Delete</button></td>
+            </form>
+            <form method="post" asp-action="Edit" asp-controller="Course" asp-route-Id="@item.Id">
+            <td>  <button class="btn btn-success" type="submit">Edit</button></td>
+            </form>
+            <form method="post" asp-action="CourseDetails" asp-controller="Course" asp-route-id="@item.Id">
+            <td> <button class="btn btn-success type="submit">Details</button></td>
+            </form>
+          
+        </tr>
+    }
+
+</table>

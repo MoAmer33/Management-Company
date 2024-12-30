@@ -1,0 +1,17 @@
+﻿@model List<Trainee>
+@{
+    ViewData["Title"] = "Show";
+}
+
+<table class="table table-hover table-bordered">
+    <tr>
+        <td>Name</td>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td> <a class="btn btn-success" asp-action="TraineeDetails" asp-controller="Trainee" asp-route-Id="@item.Id">Trainee Details</a></td>
+        </tr>
+    }
+</table>

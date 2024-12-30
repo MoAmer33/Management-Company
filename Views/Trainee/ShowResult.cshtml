@@ -1,0 +1,16 @@
+﻿@model traineeCourseResult
+@{
+    ViewData["Title"] = "ShowResult";
+}
+<table class="table table-hover table-bordered" >
+    <tr>
+        <td>TraineeName</td>
+        <td>CourseName</td>
+        <td>Status</td>
+    </tr>
+    <tr style="color:@Model.color">
+        <td>@Model.TraineeName</td>
+        <td>@Model.CourseName</td>
+        <td>@Model.status</td>
+    </tr>
+</table>

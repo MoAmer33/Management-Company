@@ -1,0 +1,46 @@
+﻿@model List<CourseResult>
+@{
+    ViewData["Title"] = "TraineeDetails";
+}
+
+<table class="table table-hover table-bordered" style="margin-bottom=20px">
+    <tr>
+        <td>TraineName</td>
+    </tr>
+    @foreach(var item in Model)
+    {
+       <tr>
+           <td>
+               @item.Trainee.Name
+               
+           </td>
+       </tr>
+      break;
+    }
+</table>
+<table class="table table-hover table-bordered">
+    <tr>
+        <td>CourseName</td>
+        <td>TraineeDegree</td>
+        <td>MaxDegree</td>
+        <td>MinDegree</td>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Course.Name</td>
+            <td>@item.DgreeOfTrainee</td>
+            <td>@item.Course.MaxDgree</td>
+            <td>@item.Course.MinDgree</td>
+            <td>
+                <form method="post" class="form form-center" asp-action="ShowResult" asp-controller="Trainee"
+                 asp-route-TraineeId="@item.TraineeId"
+                 asp-route-CourseId="@item.CourseId"
+                 asp-route-TraineeDegree="@item.DgreeOfTrainee">
+                <button type="submit" class="btn btn-success">Show Result</button>
+            </form>
+            </td>
+        </tr>
+    }
+</table>

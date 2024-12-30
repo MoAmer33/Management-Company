@@ -1,0 +1,59 @@
+﻿@model StudentGradeForEachInstructor
+@{
+    ViewData["Title"] = "ShowSingleInstructor";
+}
+
+<table class="table table-hover table-bordered">
+    <a href="/Instructor/EditInstructor?id=@Model.ins.Id" class="btn btn-primary">Edit Instructor</a>
+    <tr>
+        <td>Name of Instructor</td>
+        <td>salary</td>
+        <td>address</td>
+        <td>img</td>
+        <td>departmentName</td>
+        <td>courseName</td>
+        <td>courseHoures</td>
+    </tr>
+    <tr>
+        <td>@Model.ins.name</td>
+        <td>@Model.ins.salary</td>
+        <td>@Model.ins.address</td>
+        <td>@Model.ins.img</td>
+        <td>@Model.ins.Department.Name</td>
+        <td>@Model.ins.Course.Name</td>
+        <td>@Model.ins.Course.Hours</td>
+    </tr>
+</table>
+<table class="table table-hover table-bordered">
+    
+    <tr>
+       
+        <td>Trainee name</td>
+        <td>Course name</td>
+        <td>Trainee grade</td>
+        <td>Course grade max</td>
+        <td>Course grade min</td>
+        <td>Course.Hours </td>
+
+    </tr>
+   
+        @foreach (var item in @Model.res)
+        { <tr>
+       
+            <td>@item.Trainee.Name</td>
+            <td>@item.Course.Name </td>
+            <td>@item.DgreeOfTrainee </td>
+            <td>@item.Course.MaxDgree </td>
+            <td>@item.Course.MinDgree </td>
+            <td>@item.Course.Hours </td>
+
+        </tr>
+        }
+   
+        </table>
+        
+    
+</table>
+
+
+

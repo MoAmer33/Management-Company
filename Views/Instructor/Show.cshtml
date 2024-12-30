@@ -1,0 +1,43 @@
+﻿@model List<Instructor>
+@{
+    ViewData["Title"] = "Show";
+}
+
+    <table class="table table-hover table-bordered" >
+    <form action="/Instructor/Show" method="post"class="form form-control">
+        <input class="form form-control" type="search" placeholder="search" value="@ViewBag.InstructorName" name="InstructorName" />
+        <input type="submit" value="Search" class="btn btn-success"/>
+        <a href="/Instructor/Show"class="btn btn-success" >Back to home</a>
+
+     </form>
+    <tr><a href="/Instructor/AddInstructor" class="btn btn-success">ADD Instructor</a></tr>
+        <tr>
+            <td>Name</td>
+            <td>salary</td>
+            <td>address</td>
+            <td>img</td>
+            <td>departmentName</td>
+            <td>courseName</td>
+            <td>courseHoures</td>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.name</td> 
+                <td>@item.salary</td>
+                <td>@item.address</td>
+                <td>@item.img</td>
+                <td>@item.Department.Name</td>
+                <td>@item.Course.Name</td>
+                <td>@item.Course.Hours</td>
+            <td><a class="btn btn-success"href="/Instructor/ShowSingleInstructor?id=@item.Id">Information of Instructor</a></td>
+            <form method="post" asp-action ="Delete" asp-controller="Instructor" asp-route-Id="@item.Id">
+            <td> <button onclick="return confirmDelete()" class="btn btn-danger">Delete</button></td>
+
+            </form>
+
+            </tr>
+        }
+</table>
+
+

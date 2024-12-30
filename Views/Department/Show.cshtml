@@ -1,0 +1,45 @@
+﻿@model List<Department>
+@{
+    ViewData["Title"] = "ShowDepartment";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+    
+}
+
+<table class="table table-hover table-bordered">
+    <a  class="btn btn-success" href="/Instructor/Show">Instructors</a>
+    <tr>
+        <td>Name</td>
+        <td>Manager</td>
+        <td>instructors</td>
+        <td>courses</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Manager</td>
+            <td>
+                @foreach (var ins in @item.instructors)
+                {
+                    
+                    @ins.name 
+                    <span>, </span>
+
+                }
+            </td>
+            <td>
+
+
+                @foreach (var cours in @item.courses)
+                {
+                    @cours.Name
+
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h1>showDepartment</h1>
+

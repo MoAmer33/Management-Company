@@ -1,0 +1,36 @@
+﻿@model Course
+@{
+    ViewData["Title"] = "Edit";
+    SelectList departmentList = new SelectList(ViewBag.Department,"id","Name");
+}
+<form method="post" asp-action="SaveEdit" asp-controller="Course" asp-route-Id="@Model.Id">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <label asp-for="@Model.Name"></label>
+        <input class="form form-control" asp-for="@Model.Name"/>
+        <span asp-validation-for=@Model.Name class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="@Model.MaxDgree"></label>
+        <input class="form form-control" asp-for="@Model.MaxDgree" />
+        <span asp-validation-for=@Model.MaxDgree class="text-danger"></span>
+    </div>
+      <div>
+        <label asp-for="@Model.MinDgree"></label>
+        <input class="form form-control" asp-for="@Model.MinDgree"/>
+        <span asp-validation-for=@Model.MinDgree class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="@Model.Hours"></label>
+        <input class="form form-control" asp-for="@Model.Hours" />
+        <span asp-validation-for=@Model.Hours class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="@Model.Department.Name"></label>
+        <select class="form form-control" asp-for="@Model.DepartmentId" asp-items="departmentList"></select>
+        <span asp-validation-for=@Model.DepartmentId class="text-danger"></span>
+    </div>
+    <div>
+        <button class="btn btn-success" type="submit">SaveEdit</button>
+    </div>
+</form>

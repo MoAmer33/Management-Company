@@ -1,0 +1,36 @@
+﻿@model Instructor
+@{
+    ViewData["Title"] = "AddInstructor";
+    SelectList selectDepartmentList = new SelectList(@ViewBag.dapartment, "id", "Name");
+    SelectList selectCourseList = new SelectList(@ViewBag.courses, "Id", "Name");
+}
+
+<form class="form form-control" method="post" asp-action="SaveAdd" asp-controller="Instructor">
+    <div>
+        <label>name</label>
+        <input class="form form-control" asp-for="@Model.name" />
+    </div>
+    <div>
+        <label>salary</label>
+        <input class="form form-control" asp-for="@Model.salary" />
+    </div>
+    <div>
+        <label>address</label>
+        <input class="form form-control" asp-for="@Model.address" />
+    </div>
+
+    <div>
+        <label>img</label>
+        <input class="form form-controls" asp-for="@Model.img" />
+    </div>
+
+    <div>
+        <label>Department</label>
+        <select class="active" asp-for="@Model.DepartmentId" asp-items="selectDepartmentList"> </select>
+    </div>
+    <div>
+        <label>Course</label>
+        <select class="active" asp-for="@Model.CourseId" asp-items="selectCourseList"> </select>
+    </div>
+    <input type="submit" value="Create" class="btn btn-success"/>
+</form>
